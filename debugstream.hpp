@@ -57,10 +57,10 @@ namespace debug {
         template <typename T>
         struct Streamer
         {
-            const T& value_;
+            T& value_;
             bool verbose_;
 
-            Streamer(const T& value, bool verbose)
+            Streamer(T& value, bool verbose)
                 : value_(value), verbose_(verbose) {}
         };
 
@@ -69,7 +69,7 @@ namespace debug {
     //! \brief Provide brief output on an ouput stream.
     //! \param value The value to output for.
     template <typename T>
-    detail::Streamer<T> brief(const T& value)
+    detail::Streamer<T> brief(T& value)
     {
         return detail::Streamer<T>(value, false);
     }
@@ -77,7 +77,7 @@ namespace debug {
     //! \brief Provide verbose output on an ouput stream.
     //! \param value The value to output for.
     template <typename T>
-    detail::Streamer<T> verbose(const T& value)
+    detail::Streamer<T> verbose(T& value)
     {
         return detail::Streamer<T>(value, true);
     }
